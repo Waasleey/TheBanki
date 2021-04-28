@@ -3,9 +3,10 @@ public class Run {
         Conta primeiraconta = new Conta();
 
         primeiraconta.titular = "Wasley Fernando";
-        primeiraconta.deposita(0);
 
-        // primeiraconta.saca(151);
+        primeiraconta.deposita(10);
+
+        System.out.println(primeiraconta.saldo);
 
     }
 }

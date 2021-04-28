@@ -4,13 +4,10 @@ public class Conta {
     public int agencia;
     public String titular;
 
-    public boolean saca(double valorASacar)
+    public boolean validasaca(double valorASacar)
     {
         if (valorASacar < this.saldo)
         {
-            this.saldo -= valorASacar;
-            System.out.println("Você realizou um saque do valor de R$ " + valorASacar);
-            System.out.println("Saldo atual em conta R$ " + this.saldo);
             return true;
         }
         else
@@ -19,20 +16,37 @@ public class Conta {
             return false;
         }
     }
-    
-    public boolean deposita(double valorADepositar)
+
+    public void saca(double valorASacar)
     {
-        if(valorADepositar > 0)
+        if (validasaca(valorASacar) == true)
         {
-            this.saldo += valorADepositar;
-            System.out.println("Você realizou um deposito com o valor de R$ " + valorADepositar);
+            this.saldo -= valorASacar;
+            System.out.println("Você realizou um saque do valor de R$ " + valorASacar);
             System.out.println("Saldo atual em conta R$ " + this.saldo);
+        }
+    }
+    
+    public boolean validadeposita(double valorADepositar)
+    {
+        if (valorADepositar > 0)
+        {
             return true;
         }
         else
         {
             System.out.println("Favor, informar um valor válido para depositar");
             return false;
+        }
+    }
+    
+    public void deposita(double valorADepositar)
+    {
+        if(validadeposita(valorADepositar) == true)
+        {
+            this.saldo += valorADepositar;
+            System.out.println("Você realizou um deposito com o valor de R$ " + valorADepositar);
+            System.out.println("Saldo atual em conta R$ " + this.saldo);
         }
         
     }
