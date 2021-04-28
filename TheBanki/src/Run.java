@@ -1,12 +1,14 @@
 public class Run {
     public static void main(String[] args) {
-        Conta primeiraconta = new Conta();
+        Cliente wasley = new Cliente();
+        Conta contadoWasley = new Conta();
 
-        primeiraconta.titular = "Wasley Fernando";
+        contadoWasley.titular = wasley;
 
-        primeiraconta.deposita(10);
+        contadoWasley.titular.nome = "Wasley Fernando";
+        contadoWasley.titular.cpf = "111.111.111-11";
+        contadoWasley.titular.profissao = "Analista";
 
-        System.out.println(primeiraconta.saldo);
-
+        System.out.println(contadoWasley.titular.nome);
     }
 }

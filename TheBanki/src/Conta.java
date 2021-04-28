@@ -2,7 +2,7 @@ public class Conta {
     public double saldo;
     public int numero;
     public int agencia;
-    public String titular;
+    public Cliente titular;
 
     public boolean validasaca(double valorASacar)
     {
@@ -10,11 +10,8 @@ public class Conta {
         {
             return true;
         }
-        else
-        {
-            System.out.println("Valor indisponível para sacar");
-            return false;
-        }
+        System.out.println("Valor indisponível para sacar");
+        return false;
     }
 
     public void saca(double valorASacar)
@@ -33,11 +30,8 @@ public class Conta {
         {
             return true;
         }
-        else
-        {
-            System.out.println("Favor, informar um valor válido para depositar");
-            return false;
-        }
+        System.out.println("Favor, informar um valor válido para depositar");
+        return false;
     }
     
     public void deposita(double valorADepositar)
@@ -48,6 +42,25 @@ public class Conta {
             System.out.println("Você realizou um deposito com o valor de R$ " + valorADepositar);
             System.out.println("Saldo atual em conta R$ " + this.saldo);
         }
-        
+    }
+
+    public boolean validatransferencia(double valoraTransferir, Conta destino)
+    {
+        if(valoraTransferir <= this.saldo)
+        {
+            return true;
+        }
+        System.out.println("Saldo em conta insuficiente para transferência");
+        return false;
+    }
+
+    public void transfere(double valoraTransferir, Conta destino)
+    {
+        if (validatransferencia(valoraTransferir, destino) == true)
+        {
+            this.saldo -= valoraTransferir;
+            destino.saldo += valoraTransferir;
+            System.out.println("Você realizou a transferência de R$ " + valoraTransferir + " com sucesso para " + destino.titular);
+        }
     }
 }
